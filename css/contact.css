@@ -348,13 +348,13 @@ section[aria-labelledby="contact-form"] #thanksDialog::backdrop{
 
 fieldset:has(input:invalid),
 fieldset:has(textarea:invalid) {
-  border-color: color(display-p3 1 0.35 0.35); /* vivid red in P3 gamut */
+  border-color: color(display-p3 1 0.35 0.35); 
   box-shadow: 0 0 10px color-mix(in oklab, color(display-p3 1 0.35 0.35) 40%, transparent);
   background-color: color-mix(in oklab, #fff 85%, color(display-p3 1 0.35 0.35) 10%);
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* When form has all valid inputs */
+
 form:has(input:valid, textarea:valid) {
   border-radius: var(--radius);
   box-shadow: 0 0 12px color-mix(in oklab, var(--primary) 40%, transparent);
