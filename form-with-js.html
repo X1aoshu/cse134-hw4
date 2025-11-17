@@ -7,10 +7,28 @@
 
   <link rel="icon" href="SCicon.png" type="image/png">
   <meta charset="utf-8">
-  <title>Contact — Shuting Chen</title>
+  <title>Contact (JS Enhanced) — Shuting Chen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/form-no-js.css">
+  <link rel="stylesheet" href="css/form-with-js.css">
+
+  <script src="js/form-with-js.js" defer></script>
+
+  <style>
+    .field-flash {
+        animation: field-flash 0.18s ease-out;
+    }
+    @keyframes field-flash {
+        0%   { background-color: #ffe1e1; }
+        100% { background-color: #ffffff; }
+    }
+
+    section[aria-labelledby="contact-form"] #info-output.near-limit {
+        color: #e11d48 !important; 
+        font-weight: 700;
+    }
+    </style>
 </head>
 <body>
   <nav aria-label="Main navigation" class="site-nav">
@@ -30,71 +48,73 @@
 
   <main>
     <section aria-labelledby="contact-form">
-      <h2 id="contact-form">Send a Message</h2>
+      <h2 id="contact-form">Send a Message (with JS)</h2>
 
       <noscript>
-        <p><strong>Note:</strong> JavaScript is disabled.</p>
+        <p><strong>Note:</strong> JavaScript is disabled — this enhanced version falls back to basic browser validation. For the full experience, please enable JavaScript.</p>
       </noscript>
 
-      <form id="contactForm" action="https://httpbin.org/post" method="post">
+      <form id="contactForm" action="https://httpbin.org/post" method="post" novalidate>
 
         <input type="hidden" name="possible_bot" value="true">
 
-        <fieldset>
-            <legend>Your Details</legend>
+        <input type="hidden" name="form-errors" id="form-errors">
 
-            <p>
+        <fieldset>
+          <legend>Your Details</legend>
+
+          <p>
             <label for="name">Name</label><br>
             <input id="name" name="name" type="text"
-                    required minlength="2" maxlength="50"
-                    pattern="[A-Za-z\s]+"
-                    placeholder="Your name" autocomplete="name">
-            </p>
+                   required minlength="2" maxlength="50"
+                   pattern="[A-Za-z\s]+"
+                   placeholder="Your name" autocomplete="name">
+          </p>
 
-            <p>
+          <p>
             <label for="email">Email</label><br>
             <input id="email" name="email" type="email"
-                    required placeholder="you@example.com" autocomplete="email">
-            </p>
+                   required placeholder="you@example.com" autocomplete="email">
+          </p>
 
-            <p>
+          <p>
             <label for="phone">Phone</label><br>
             <input id="phone" name="phone" type="tel"
-                    pattern="[0-9\-\+\(\)\s]{7,20}"
-                    placeholder="+1 (___) ___-____" autocomplete="tel">
-            </p>
+                   pattern="[0-9\-\+\(\)\s]{7,20}"
+                   placeholder="+1 (___) ___-____" autocomplete="tel">
+          </p>
         </fieldset>
 
         <fieldset>
-            <legend>Your Comments</legend>
-            <p>
+          <legend>Your Comments</legend>
+          <p>
             <label for="msg">Comments</label><br>
             <textarea id="msg" name="msg"
-                        required minlength="5" maxlength="500"
-                        rows="6" cols="40"
-                        placeholder="Write your comments here..."></textarea>
-            </p>
+                      required minlength="5" maxlength="500"
+                      rows="6" cols="40"
+                      placeholder="Write your comments here..."></textarea>
+          </p>
         </fieldset>
 
         <p><em>Please make sure your info is correct before submitting the form.</em></p>
 
         <p>
-            <button class="btn-send" type="submit">
+          <button class="btn-send" type="submit">
             Send
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 12h13m0 0-5-5m5 5-5 5"
+              <path d="M4 12h13m0 0-5-5m5 5-5 5"
                     stroke="currentColor" stroke-width="2"
                     fill="none" stroke-linecap="round"
                     stroke-linejoin="round"/>
             </svg>
-            </button>
+          </button>
         </p>
 
-        <div class="messages">
-            <output id="error-output"></output>
-            <output id="info-output"></output>
+        <div class="messages" aria-live="polite">
+          <output id="error-output"></output>
+          <output id="info-output"></output>
         </div>
-        </form>
+      </form>
 
     </section>
   </main>
