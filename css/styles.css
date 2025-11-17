@@ -1,6 +1,3 @@
-
-
-
 :root {
   --brand-bg: #a19f9f;
   --accent-red: #f2442e;
@@ -8,6 +5,11 @@
   --accent-blue: #7fd3d4;
   --shadow-soft: 0 4px 16px rgba(0,0,0,0.1);
   --radius-smooth: 16px;
+  --page-bg: #c9c5c5;
+  --page-ink: #222;
+
+  --icon-stroke: #000; 
+  --icon-text:  #000;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,9 +17,10 @@
 html {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  color: #222;
-  background-color: #c9c5c5;
+  color: var(--page-ink, #222);
+  background-color: var(--page-bg, #c9c5c5);
 }
+
 
 img, svg, video { max-width: 100%; height: auto; display: block; }
 body { overflow-x: hidden; }
@@ -26,7 +29,7 @@ main {
   max-width: 2000px;
   margin: 2rem auto;
   padding: 0 1rem;
-  background-color: #c9c5c5;
+  background-color: var(--page-bg, #c9c5c5);
   text-align: center;
 }
 
@@ -123,6 +126,12 @@ main {
   figure { text-align: center; }
 }
 
+.icons svg rect,
+.icons svg line,
+.icons svg circle {
+  stroke: var(--icon-stroke);
+}
+
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -141,7 +150,11 @@ main {
   margin: 1.5rem 0;
   flex-wrap: wrap;
 
-  h2 { font-size: 1.4rem; color: #222; margin: 0; }
+  h2 {
+    font-size: 1.4rem;
+    color: var(--page-ink, #222); 
+    margin: 0;
+  }
 
   .github-btn {
     display: inline-flex;
@@ -240,4 +253,12 @@ main {
   }
 
   .icons { gap: 8rem; }
+}
+
+html[data-theme="dark"] {
+  --page-bg: #020617;     
+  --page-ink: #e5e7eb;    
+
+  --icon-stroke: #e5e7eb; 
+  --icon-text:  #e5e7eb;
 }

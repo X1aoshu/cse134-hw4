@@ -39,10 +39,11 @@ main{
   }
 
   > article{
-    background:var(--card,#f7f7f7);
-    border-radius:var(--radius,12px);
-    box-shadow:var(--shadow,0 4px 12px rgba(0,0,0,.08));
-    padding:1rem .95rem;
+    background: var(--card-bg, var(--card, #f7f7f7));
+    border-radius: var(--radius, 12px);
+    box-shadow: var(--shadow-soft, 0 4px 12px rgba(0,0,0,.08));
+    padding: 1rem .95rem;
+
 
     h2{
       font-size:clamp(18px,2.4vw,24px);

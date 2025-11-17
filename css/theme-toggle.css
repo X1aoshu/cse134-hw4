@@ -1,0 +1,45 @@
+:root {
+  --page-bg: #c9c5c5;
+  --ink: #222;
+  --muted: #555;
+  --rule: #ddd;
+  --card: #f7f7f7;
+  --accent: #f2442e;
+  --primary: #7fd3d4;
+  --card-bg: #f7f7f7; 
+  --shadow-soft: 0 4px 16px rgba(0,0,0,0.1);
+
+  --brand-bg: #a19f9f;
+  --text-main: #000;
+  --text-muted: #333;
+  --foot-bg: #f3f3f3;
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #020617;
+  --ink: #e5e7eb;
+  --muted: #9ca3af;
+  --rule: #27272f;
+  --card: #020617;
+  --accent: #fb7185;
+  --primary: #38bdf8;
+  --card-bg: #020617;
+  --shadow-soft: 0 14px 45px rgba(0,0,0,0.75);
+
+  --brand-bg: #111827;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --foot-bg: #020617;
+}
+
+@supports (view-transition-name: root) {
+  html {
+    view-transition-name: root;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+  }
+}

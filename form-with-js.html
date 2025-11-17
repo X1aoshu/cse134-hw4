@@ -11,7 +11,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/form-with-js.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/theme-toggle.css">
+  <script src="js/theme-toggle.js" defer></script>
 
   <script src="js/form-with-js.js" defer></script>
 
@@ -32,16 +34,18 @@
 </head>
 <body>
   <nav aria-label="Main navigation" class="site-nav">
-    <a class="brand" href="index.html"><b>Shuting Chen</b> — <span>UCSD ECE Student</span></a>
+    <a class="brand vt-link" href="index.html">
+      <b>Shuting Chen</b> — <span>UCSD ECE Student</span>
+    </a>
 
     <details class="menu">
       <summary aria-label="Toggle navigation">☰</summary>
       <menu-items>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="form-no-js.html">FormNoJS</a>
-        <a href="form-with-js.html">FormWithJS</a>
+        <a href="resume.html" class="vt-link">Resume</a>
+        <a href="projects.html" class="vt-link">Projects</a>
+        <a href="contact.html" class="vt-link">Contact</a>
+        <a href="form-no-js.html" class="vt-link">FormNoJS</a>
+        <a href="form-with-js.html" class="vt-link">FormWithJS</a>
       </menu-items>
     </details>
   </nav>
@@ -51,7 +55,7 @@
       <h2 id="contact-form">Send a Message (with JS)</h2>
 
       <noscript>
-        <p><strong>Note:</strong> JavaScript is disabled — this enhanced version falls back to basic browser validation. For the full experience, please enable JavaScript.</p>
+        <p><strong>Note:</strong> JavaScript is disabled — for the full experience, please enable JavaScript.</p>
       </noscript>
 
       <form id="contactForm" action="https://httpbin.org/post" method="post" novalidate>

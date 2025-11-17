@@ -1,10 +1,13 @@
+@view-transition {
+  navigation: auto;
+}
+
 html {
   font-family: "Montserrat", "Noto Sans SC", "PingFang SC", 
                "Microsoft YaHei UI", "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  color: #000000;
+  color: var(--page-ink, #000);  
 }
-
 :root {
   --brand-bg: #a19f9f;
   --text-main: #000;
@@ -25,6 +28,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
   position: sticky;
   top: 0;
   z-index: 10;
+  gap: 0.5rem;
 
   .brand {
     font-weight: 700;
@@ -69,6 +73,49 @@ img, svg { max-width: 100%; height: auto; display: block; }
       }
     }
   }
+}
+
+.site-nav .menu {
+  position: relative;
+  margin-left: auto; 
+}
+
+.site-nav .menu summary {
+  margin-left: auto;   
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.site-nav .theme-toggle {
+  margin-left: 0.5rem; 
+}
+
+.site-nav .theme-toggle {
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: #fff;
+  color: #111;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-nav .theme-toggle-icon {
+  font-size: 1rem;
+}
+
+.site-nav .theme-toggle:hover,
+.site-nav .theme-toggle:focus-visible {
+  background: #f3f4f6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+  outline: none;
 }
 
 @media (min-width: 1025px) {
@@ -169,4 +216,41 @@ main {
 
 .site-footer img:hover {
   animation: pulse 0.6s ease-in-out;
+}
+
+::view-transition-old(root) {
+  animation: page-exit-up 420ms ease-in-out both;
+}
+
+::view-transition-new(root) {
+  animation: page-enter-up 420ms ease-in-out both;
+}
+
+@keyframes page-exit-up {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.96);
+  }
+}
+
+@keyframes page-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.001ms !important;
+  }
 }

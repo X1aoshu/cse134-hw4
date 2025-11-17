@@ -11,18 +11,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/theme-toggle.css">
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/form-with-js.js" defer></script>
+
+  <style>
+    .field-flash {
+        animation: field-flash 0.18s ease-out;
+    }
+    @keyframes field-flash {
+        0%   { background-color: #ffe1e1; }
+        100% { background-color: #ffffff; }
+    }
+
+    section[aria-labelledby="contact-form"] #info-output.near-limit {
+        color: #e11d48 !important; 
+        font-weight: 700;
+    }
+    </style>
 </head>
 <body>
   <nav aria-label="Main navigation" class="site-nav">
-    <a class="brand" href="index.html"><b>Shuting Chen</b> — <span>UCSD ECE Student</span></a>
+    <a class="brand vt-link" href="index.html">
+      <b>Shuting Chen</b> — <span>UCSD ECE Student</span>
+    </a>
 
     <details class="menu">
       <summary aria-label="Toggle navigation">☰</summary>
       <menu-items>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="form-no-js.html">FORM</a>
+        <a href="resume.html" class="vt-link">Resume</a>
+        <a href="projects.html" class="vt-link">Projects</a>
+        <a href="contact.html" class="vt-link">Contact</a>
+        <a href="form-no-js.html" class="vt-link">FormNoJS</a>
+        <a href="form-with-js.html" class="vt-link">FormWithJS</a>
       </menu-items>
     </details>
   </nav>
@@ -43,54 +64,74 @@
     </section>
 
     <section aria-labelledby="contact-form">
-      <h2 id="contact-form">Send a Message</h2>
+      <h2 id="contact-form">Send a Message (with JS)</h2>
 
       <noscript>
-        <p><strong>Note:</strong> JavaScript is disabled — the confirmation dialog will not appear after submitting.</p>
+        <p><strong>Note:</strong> JavaScript is disabled — for the full experience, please enable JavaScript.</p>
       </noscript>
 
-      <form id="contactForm" action="#" method="post">
+      <form id="contactForm" action="https://httpbin.org/post" method="post" novalidate>
+
+        <input type="hidden" name="possible_bot" value="true">
+
+        <input type="hidden" name="form-errors" id="form-errors">
+
         <fieldset>
           <legend>Your Details</legend>
 
           <p>
             <label for="name">Name</label><br>
-            <input id="name" name="name" type="text" required placeholder="Your name" autocomplete="name">
+            <input id="name" name="name" type="text"
+                   required minlength="2" maxlength="50"
+                   pattern="[A-Za-z\s]+"
+                   placeholder="Your name" autocomplete="name">
           </p>
 
           <p>
             <label for="email">Email</label><br>
-            <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+            <input id="email" name="email" type="email"
+                   required placeholder="you@example.com" autocomplete="email">
           </p>
 
           <p>
             <label for="phone">Phone</label><br>
-            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+1 (___) ___-____" autocomplete="tel">
+            <input id="phone" name="phone" type="tel"
+                   pattern="[0-9\-\+\(\)\s]{7,20}"
+                   placeholder="+1 (___) ___-____" autocomplete="tel">
           </p>
         </fieldset>
 
         <fieldset>
-          <legend>Your Message</legend>
+          <legend>Your Comments</legend>
           <p>
-            <label for="msg">Message</label><br>
-            <textarea id="msg" name="msg" rows="6" cols="40" placeholder="Write your message here..." required></textarea>
+            <label for="msg">Comments</label><br>
+            <textarea id="msg" name="msg"
+                      required minlength="5" maxlength="500"
+                      rows="6" cols="40"
+                      placeholder="Write your comments here..."></textarea>
           </p>
         </fieldset>
 
         <p><em>Please make sure your info is correct before submitting the form.</em></p>
 
-        <p><button class="btn-send" type="submit">
-          Send
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button></p>
+        <p>
+          <button class="btn-send" type="submit">
+            Send
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h13m0 0-5-5m5 5-5 5"
+                    stroke="currentColor" stroke-width="2"
+                    fill="none" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </p>
+
+        <div class="messages" aria-live="polite">
+          <output id="error-output"></output>
+          <output id="info-output"></output>
+        </div>
       </form>
 
-      <dialog id="thanksDialog" aria-label="Submission confirmation">
-        <p>I will reply ASAP 😊</p>
-        <button id="closeDialog" type="button">OK</button>
-      </dialog>
     </section>
   </main>
 

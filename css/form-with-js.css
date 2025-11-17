@@ -164,27 +164,27 @@ section[aria-labelledby="contact-form"] .btn-send:active{
 }
 
 
-section[aria-labelledby="contact-form"] .messages{
-  margin-top:.5rem;
-  display:grid;
-  gap:.25rem;
-  min-height:2.4rem;
+section[aria-labelledby="contact-form"] .messages {
+  margin-top: .5rem;
+  display: grid;         
+  gap: .25rem;
+  min-height: 2.4rem;    
 }
 
 section[aria-labelledby="contact-form"] #error-output,
-section[aria-labelledby="contact-form"] #info-output{
-  display:block;
-  font-size:.9rem;
-  line-height:1.3;
+section[aria-labelledby="contact-form"] #info-output {
+  display: block;        
+  font-size: .9rem;
+  line-height: 1.3;
 }
 
-section[aria-labelledby="contact-form"] #error-output{
-  color:var(--accent,#f2442e);
-  font-weight:600;
+section[aria-labelledby="contact-form"] #error-output {
+  color: var(--accent, #f2442e);
+  font-weight: 600;
 }
 
-section[aria-labelledby="contact-form"] #info-output{
-  color:var(--muted,#555);
+section[aria-labelledby="contact-form"] #info-output {
+  color: var(--muted, #555);
 }
 
 section[aria-labelledby="contact-form"] fieldset:has(input:invalid),
