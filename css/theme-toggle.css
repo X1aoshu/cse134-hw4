@@ -6,13 +6,16 @@
   --card: #f7f7f7;
   --accent: #f2442e;
   --primary: #7fd3d4;
-  --card-bg: #f7f7f7; 
+  --card-bg: #f7f7f7;
   --shadow-soft: 0 4px 16px rgba(0,0,0,0.1);
 
   --brand-bg: #a19f9f;
   --text-main: #000;
   --text-muted: #333;
   --foot-bg: #f3f3f3;
+
+  --font-body: "Montserrat", "Noto Sans SC", "PingFang SC",
+               "Microsoft YaHei UI", "Segoe UI", Roboto, sans-serif;
 }
 
 :root[data-theme="dark"] {
@@ -30,6 +33,31 @@
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
   --foot-bg: #020617;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="ocean"] {
+  --page-bg: #0f172a;       
+  --ink: #e0f2fe;           
+  --muted: #bae6fd;
+  --rule: #1e293b;
+  --card: #020617;
+  --accent: #38bdf8;
+  --primary: #22c55e;
+  --card-bg: #020617;
+  --shadow-soft: 0 12px 32px rgba(15,23,42,0.9);
+
+  --brand-bg: #0f172a;
+  --text-main: #e0f2fe;
+  --text-muted: #bae6fd;
+  --foot-bg: #020617;
+
+  --font-body: "Gill Sans", "Montserrat", system-ui, sans-serif;
+}
+
+
+:root[data-theme="custom"] {
 }
 
 @supports (view-transition-name: root) {

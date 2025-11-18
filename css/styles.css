@@ -75,12 +75,19 @@ main {
     }
 
     > p rt {
-        font-size: 0.75em; 
-        color: #555;       
-        line-height: 1.2;  
+        font-size: 0.75em;
+        color: var(--muted, #555);  
+        line-height: 1.2;
     }
-
   }
+
+  .top-title,
+  .top-subtitle,
+  .top-text p {
+    color: var(--page-ink, #222);
+  }
+
+
 
   .top-ctas {
     display: flex;
