@@ -19,16 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
     infoOutput.classList.remove("near-limit");
   }
 
-  function showError(message, autoClearMs) {
+  function showError(message, autoClearMs = 3500) {
     errorOutput.textContent = message;
-    if (autoClearMs) {
-      const current = message;
-      setTimeout(() => {
-        if (errorOutput.textContent === current) {
-          errorOutput.textContent = "";
-        }
-      }, autoClearMs);
-    }
+    const current = message;
+
+    setTimeout(() => {
+      if (errorOutput.textContent === current) {
+        errorOutput.textContent = "";
+      }
+    }, autoClearMs);
   }
 
   function showInfo(message, isNearLimit = false) {
